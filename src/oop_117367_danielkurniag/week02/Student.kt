@@ -1,6 +1,6 @@
 package oop_117367_danielkurniag.week02
 
-class Student(val name: String, val nim: String, var major: String) {
+class Student(val name: String, val nim: String, var major: String, val ipk: Double = 0.0) {
     constructor(name: String, nim: String) : this(name, nim, "Non-Matriculated"){
         println("LOG: MENGGUNAKAN CONSTRUCTOR JALUR UMUM (TANPA JURUSAN)")
     }
