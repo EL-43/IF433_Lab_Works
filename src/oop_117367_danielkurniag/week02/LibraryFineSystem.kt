@@ -1,10 +1,6 @@
 package oop_117367_danielkurniag.week02
 
-class Loan (
-    val bookTitle: String,
-    val borrower: String,
-    var loanDuration: Int = 1
-)
+import java.util.Scanner
 
 fun calculateFine(loanDuration: Int) =
     if (loanDuration > 3)
@@ -13,7 +9,26 @@ fun calculateFine(loanDuration: Int) =
         0
 
 fun main(){
-    val fineSystem = Loan("Moby Dick", "Ishmael", 67)
-    val denda = calculateFine(fineSystem.loanDuration)
-    print("Final fee is: $denda")
+    //scanner in
+    val scanner = Scanner(System.`in`)
+
+    println("Enter Book Title: ")
+    val bookTitle = scanner.nextLine()
+
+    print("Enter Borrower Name: ")
+    val borrower = scanner.next()
+    scanner.nextLine()
+
+    print("Enter Duration of borrowing: ")
+    var borrowDuration = scanner.nextInt()
+    scanner.nextLine()
+
+    if (borrowDuration < 0) {
+       borrowDuration = 1
+    }
+
+    val loan = Loan(bookTitle, borrower, borrowDuration)
+    val denda = calculateFine(loan.loanDuration)
+    println("Detail Pemesanan: \nJudul: ${loan.bookTitle}\nPeminjam: ${loan.borrower}\nLama Peminjaman: ${loan.loanDuration}")
+    println("Final fee is: $denda")
 }
