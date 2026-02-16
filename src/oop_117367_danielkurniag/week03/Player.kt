@@ -1,7 +1,7 @@
 package oop_117367_danielkurniag.week03
 
 class Player {
-    var username = String
+    var username : String = "Gregor Samsa"
     private var xp : Int = 0
     var level : Int = 0
         get() {
