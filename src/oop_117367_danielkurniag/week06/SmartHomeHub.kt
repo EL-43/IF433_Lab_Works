@@ -15,4 +15,16 @@ class SmartHomeHub {
             }
         }
     }
+    fun activateSecurityMode(){
+        for (SmartDevice in devices){
+            when(SmartDevice){
+                is Recordable -> {
+                    SmartDevice.startRecord()
+                }
+                is SmartSpeaker -> {
+                    SmartDevice.playMusic("Warning Siren")
+                }
+            }
+        }
+    }
 }
