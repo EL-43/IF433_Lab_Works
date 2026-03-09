@@ -1,7 +1,7 @@
 package oop_117367_danielkurniag.week06
 
 interface Clickable {
-    val name : String = 'Tombol Rahasia'
-
+    val name : String
     fun click()
 }
+
