@@ -40,5 +40,8 @@ fun main() {
     println("\n=== GAME SYSTEM TESTING ===")
     GameManager.startGame()
     GameManager.startGame()
-
+    println(ItemRarity.LEGENDARY.dropChance)
+    val forged = Weapon.forgeStarterSword()
+    val forgeResult = forged.items
+    println("Obtained '${forgeResult.name}', with a rarity of ${forgeResult.rarity} that deals ${forgeResult.damage} damage per hit.")
 }
