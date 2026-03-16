@@ -1,7 +1,5 @@
 package oop_117367_danielkurniag.week07
 
-import oop_117367_danielkurniag.week02.isAlive
-
 fun main() {
     println("=== SINGLETON TEST ===")
     println("Status: ${DatabaseManager.connectionStatus}")
@@ -37,5 +35,10 @@ fun main() {
         is ApiResponse.Error -> "Show ${response.message}"
         is ApiResponse.Loading -> "Loading..."
     }
+
+
+    println("\n=== GAME SYSTEM TESTING ===")
+    GameManager.startGame()
+    GameManager.startGame()
 
 }
