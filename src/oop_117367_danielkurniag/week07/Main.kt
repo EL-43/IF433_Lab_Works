@@ -44,4 +44,11 @@ fun main() {
     val forged = Weapon.forgeStarterSword()
     val forgeResult = forged.items
     println("Obtained '${forgeResult.name}', with a rarity of ${forgeResult.rarity} that deals ${forgeResult.damage} damage per hit.")
+
+    val forgeDifferent = forgeResult.copy(damage = 20)
+
+    processEvent(SafeZone)
+    processEvent(MonsterEncounter("Sneaky Goblin"))
+    processEvent(LootDropped(forgeDifferent))
+    processEvent(GameOver("Poison Trap"))
 }
