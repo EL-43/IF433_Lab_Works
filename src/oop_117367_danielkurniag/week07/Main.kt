@@ -1,5 +1,7 @@
 package oop_117367_danielkurniag.week07
 
+import oop_117367_danielkurniag.week02.isAlive
+
 fun main() {
     println("=== SINGLETON TEST ===")
     println("Status: ${DatabaseManager.connectionStatus}")
