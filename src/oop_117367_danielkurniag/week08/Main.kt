@@ -64,4 +64,6 @@ fun main(){
     // we use !! because we KNOW that the Java implementation is safe.
     val statusLength = javaResponse!!.length
     println("Status dari java: $javaResponse (Length: $statusLength)")
+
+    runMockUnitText()
 }
