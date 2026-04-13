@@ -6,7 +6,10 @@ class NotificationService{
     }
 
     fun processUser(user: UserProfile){
+        //send.email(user:email) will result in an error
+
         if (user.email != null){
+            //SUCCESS via smart casting, compiler will know 'user.email' will not null on this block
             sendEmail(user.email)
         } else {
             println("User ${user.name} tidak memiliki email.")
