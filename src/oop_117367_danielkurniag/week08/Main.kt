@@ -58,4 +58,10 @@ fun main(){
     } catch (e: IllegalArgumentException) {
         print(e.message) //prints custom error message, not a blind crash
     }
+
+    println("\n==== TEST JAVA INTEROPERABILITY ====")
+    val javaResponse = LegacyJavaAPI.fetchServerStatus()
+    // we use !! because we KNOW that the Java implementation is safe.
+    val statusLength = javaResponse!!.length
+    println("Status dari java: $javaResponse (Length: $statusLength)")
 }
