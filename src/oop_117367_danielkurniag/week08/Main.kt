@@ -39,4 +39,5 @@ fun main(){
     //if it fails (null), replace with "Unknown String"
     val safeString = someObject as? String?: "Unknown String"
     println("Hasil cast + fallback: $safeString")
+
 }
