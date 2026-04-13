@@ -21,7 +21,7 @@ fun main(){
     val mixedData: List<Any> = listOf(
         "Smartphone",
         1500000,
-        UserProfile("Andi", null)
+        UserProfile("Andi", null),
         "Laptop",
         4500000.0
     )
@@ -33,4 +33,10 @@ fun main(){
             println("Found text: ${it.uppercase()}")
         }
     }
+
+    val someObject: Any = 100 //original type of Int
+    //try to cast it to a string.
+    //if it fails (null), replace with "Unknown String"
+    val safeString = someObject as? String?: "Unknown String"
+    println("Hasil cast + fallback: $safeString")
 }
