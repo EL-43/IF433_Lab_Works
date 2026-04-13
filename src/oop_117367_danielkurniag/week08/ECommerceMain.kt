@@ -8,6 +8,7 @@ fun main(){
         mapOf("name" to "Ghost Item", "type" to "CLOTHING"), // Missing ID!
         mapOf("id" to "X01", "name" to "Unknown", "type" to "FOOD") // Unknown type
     )
+
     val parser = ApiParser()
     for (raw in rawApiData){
         try {
