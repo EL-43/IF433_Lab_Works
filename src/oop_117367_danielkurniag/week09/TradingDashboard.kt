@@ -1,6 +1,6 @@
 package oop_117367_danielkurniag.week09
 
-fun main(){
+fun main() {
     val tradeHistory = listOf(
         TradeLog("Pair1", "Pos1", 20, 25.0, "OPEN"),
         TradeLog("Pair2", "Pos2", 30, -30.0, "OPEN"),
@@ -12,4 +12,6 @@ fun main(){
 
     val closedTrades = tradeHistory
         .filter { it.status == "CLOSED" }
-}
+
+    val winningTrades = closedTrades
+        .filter { it.roe > 0 }
