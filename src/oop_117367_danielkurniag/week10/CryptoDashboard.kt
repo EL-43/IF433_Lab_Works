@@ -11,4 +11,10 @@ fun main(){
     response.data.forEach {
         println(it)
     }
+
+    val txRepo = WalletRepository<Transaction>()
+
+    txRepo.add(Transaction("001", 43.0))
+    txRepo.add(Transaction("002", 67.0))
+    txRepo.add(Transaction("003", 69.0))
 }
