@@ -1,5 +1,7 @@
 package oop_117367_danielkurniag.week10
 
+import sun.management.MemoryUsageCompositeData.getMax
+
 fun main(){
     println("==== TEST GENERIC CLASS ====")
     val intBox = Box(100)
@@ -16,4 +18,6 @@ fun main(){
     printData(3.14)
     val result = processData("Stable Coin")
     println("Result: $result")
+
+
 }
