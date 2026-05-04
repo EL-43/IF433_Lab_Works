@@ -31,4 +31,7 @@ fun main(){
         println(it.diagnose())
     }
 
+    with(homeDevices) {
+        println("found ${this.size} devices")
+    }
 }
