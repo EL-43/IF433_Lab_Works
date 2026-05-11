@@ -26,5 +26,9 @@ fun main(){
         println("Dispenser checks finished.")
     }
 
-    runCatching { dispenseKibble(30, 100, false) }
+    runCatching { dispenseKibble(30, 100, false) }.onSuccess {
+        newStock->
+        currentKibbleStock = newStock
+        println("Dinner successfully dispensed! Current Kibble is $currentKibbleStock grams")
+    }
 }
