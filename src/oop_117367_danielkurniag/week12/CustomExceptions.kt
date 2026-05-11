@@ -17,3 +17,17 @@ class BankAccount(var balance: Double){
         println("Withdrawal successful. Remaining balance: $balance")
     }
 }
+
+fun main(){
+    println("==== TEST MULTIPLE CATCH ====")
+    val account = BankAccount(100.0)
+    try {
+        account.withdraw(150.0)
+    } catch (e: InsufficientFundsException) {
+        println("Caught Domain Error: insufficient funds ${e.message}")
+    } catch (e: IllegalArgumentException) {
+        println("Caught Argument Error: invalid input ${e.message}")
+    } catch (e: Exception) {
+        println("Caught General Exception: unexpected error")
+    }
+}
