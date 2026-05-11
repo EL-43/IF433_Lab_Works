@@ -5,5 +5,9 @@ fun dispenseKibble(requestedGrams: Int, availableGrams: Int, isJammed: Boolean):
     if (isJammed) {
         throw DispenserJamException()
     }
-    return TODO("Provide the return value")
+    if (requestedGrams > availableGrams) {
+        throw FoodEmptyException(requestedGrams, availableGrams)
+    }
+    println("Kibble dispensed!")
+    return availableGrams - requestedGrams
 }
