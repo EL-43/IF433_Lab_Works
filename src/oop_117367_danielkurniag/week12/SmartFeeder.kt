@@ -30,5 +30,8 @@ fun main(){
         newStock->
         currentKibbleStock = newStock
         println("Dinner successfully dispensed! Current Kibble is $currentKibbleStock grams")
+    }.onFailure {
+        error->
+        println("Reminder ${error.message}")
     }
 }
