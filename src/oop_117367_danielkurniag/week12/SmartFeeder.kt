@@ -22,5 +22,7 @@ fun main(){
         println("Caught Food Error: ${e.message}")
     } catch (e: Exception) {
         println("Caught Generic Exception: ${e.message}")
+    } finally {
+        println("Dispenser checks finished.")
     }
 }
