@@ -25,4 +25,6 @@ fun main(){
     } finally {
         println("Dispenser checks finished.")
     }
+
+    runCatching { dispenseKibble(30, 100, false) }
 }
