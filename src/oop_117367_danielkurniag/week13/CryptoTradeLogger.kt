@@ -53,5 +53,5 @@ fun main(){
 
     val totalPnl = loadedData.sumOf { it.pnl }
 
-
+    println("==== TOTAL PnL BERSIH $totalPnl ====")
 }
