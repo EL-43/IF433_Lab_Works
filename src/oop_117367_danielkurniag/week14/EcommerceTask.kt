@@ -1,26 +1,40 @@
 package oop_117367_danielkurniag.week14
-import oop_117367_danielkurniag.week08.Order
 import java.io.File
 
-class BadOrderProcessor{
-    //VIOLATION: Hardcoded File I/O (DIP), runs calculations + I/O + notifs all in one class
+
+interface OrderRepository{
+    fun saveOrder(outputFile: File, itemName: String, basePrice: Double, customerType: String)
+}
+
+class CsvOrderRepository : OrderRepository{
+    override fun saveOrder(outputFile: File, itemName: String, basePrice: Double, customerType: String) {
+        outputFile.writer().use { writer ->
+            writer.append("$itemName,$basePrice,$customerType \n")
+        }
+    }
+}
+
+interface NotificationService{
+    fun sendNotification(itemName: String)
+}
+
+class EmailNotifier: NotificationService{
+    override fun sendNotification(itemName: String) {
+        println("Email terkirim: Pesanan anda $itemName telah dikirim.")
+    }
+}
+
+class SafeOrderProcessor(val repo: OrderRepository, val notifier: NotificationService){
     private val file = File("orders.csv")
 
     fun processOrder(itemName: String, basePrice: Double, customerType: String){
-
-        //VIOLATION: hard to edit if a customer type / new discount is added in the future (OCP)
         val finalPrice = when (customerType) {
             "REGULAR" -> basePrice
             "VIP" -> basePrice * 0.90
             else -> basePrice
         }
 
-        println("Memproses pesanan $itemName seharga $finalPrice")
-
-        //VIOLATION SRP/DIP: writes file to business class directly
-        file.appendText("$itemName, $finalPrice, $customerType\n")
-
-        //VIOLATION SRP/DIP: notifications are tied strongly to the order system
-        println("Email terkirim: Pesanan $itemName anda telah dikonfirmasi.")
+        repo.saveOrder(file, itemName, basePrice, customerType)
+        notifier.sendNotification(itemName)
     }
 }
