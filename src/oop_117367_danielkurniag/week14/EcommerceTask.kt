@@ -3,13 +3,13 @@ import java.io.File
 
 
 interface OrderRepository{
-    fun saveOrder(outputFile: File, itemName: String, basePrice: Double, customerType: String)
+    fun saveOrder(outputFile: File, itemName: String, basePrice: Double)
 }
 
 class CsvOrderRepository : OrderRepository{
-    override fun saveOrder(outputFile: File, itemName: String, basePrice: Double, customerType: String) {
+    override fun saveOrder(outputFile: File, itemName: String, basePrice: Double) {
         outputFile.writer().use { writer ->
-            writer.append("$itemName,$basePrice,$customerType \n")
+            writer.append("$itemName,$basePrice\n")
         }
     }
 }
@@ -24,17 +24,25 @@ class EmailNotifier: NotificationService{
     }
 }
 
+interface PricingStrategy{
+    fun calculate(price: Double): Double
+}
+
+class VipPricing : PricingStrategy{
+    override fun calculate(price: Double) : Double = price * 0.90
+}
+
+class RegularPricing : PricingStrategy{
+    override fun calculate(price: Double) : Double = price
+}
+
 class SafeOrderProcessor(val repo: OrderRepository, val notifier: NotificationService){
     private val file = File("orders.csv")
 
-    fun processOrder(itemName: String, basePrice: Double, customerType: String){
-        val finalPrice = when (customerType) {
-            "REGULAR" -> basePrice
-            "VIP" -> basePrice * 0.90
-            else -> basePrice
-        }
-
-        repo.saveOrder(file, itemName, basePrice, customerType)
+    fun processOrder(itemName: String, basePrice: Double, customerType: String, strategy: PricingStrategy){
+        val finalPrice = strategy.calculate(basePrice)
+        println("Processing $itemName with price $finalPrice")
+        repo.saveOrder(file, itemName, finalPrice)
         notifier.sendNotification(itemName)
     }
 }
